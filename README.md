@@ -1,8 +1,8 @@
 # Projektarbete - Python: Konfigurering & Validering av VLAN
-Verktyg för automatisera generering av VLAN-konfigurationer från CSV-filer samt validering av sparade konfigurationer mot specifika regler.
+Verktyg för automatisera generering av VLAN-konfigurationer från CSV-fil, samt validering av sparade konfigurationer mot specifika regler.
 
 ## Projektstruktur
-Projektet ska bestå av fyra `-py`-filer: en `main`-fil, och tre 'moduler' som innehåller funtkioner som `main` kan importera.
+Projektet ska bestå av en `.csv`-fil och fyra `-py`-filer: en `main`-fil, och fyra 'moduler' som innehåller funtkioner som `main` kan importera, och en CSV-tabell som innehåller dem värden som funktionerna ska hantera.
 
 Vid deadline ska repot innehålla följande:
 
@@ -14,13 +14,15 @@ Vid deadline ska repot innehålla följande:
 
 * **vlan_validate.py**: Läser en sparad konfigurationsfil och kontrollerar den mot tre regler.
 
-* **main.py**: Hämtar funktionerna från ovanstående filer och sammanfogar alla funktioner i en applikation. När projektet är färdigt så är det endast den här filen som körs.
+* **main.py**: Hämtar funktionerna från ovanstående filer och sammanfogar alla funktioner i en applikation. SKriver en konfig-fil med texten från **dem tre översta modulerna** och granskar den med **vlan_validate**. När projektet är färdigt så körs endast **main**.
+
+* **test.csv**: En CSV-tabell som innehåller all information som behövs för konfigurering.
 
 ## Gruppmedlemmar & Rollfördelning
-* **Alexander Ågren** - <roll>
+* **Alexander Ågren** - ansvarig för Huvudprogrammet och integration av moduler till Main.
 * **Emil Estborn** - <roll>
 * **Raghed Kordi** - <roll>
-* **Sara Ahmed** - <roll>
+* **Sara Ahmed** - ansvarig för CSV-läsare.(`vlan_parser.py`)
 * **Ali Heleil** - <roll>
 
 ## Funktioner - Två faser
@@ -42,11 +44,12 @@ Vi arbetar i egna branches, vi pushar till dessa branches och skapar pull reques
 4. Pusha till GitHub:
 * Första gången, när branchen just har skapats: `git push -u origin [namnet på er branch]`
 * Efter första gången: `git push`
-5. Skapa en pull request så granskar vi den som grupp. Om allting fungerar som det ska så mergas den med `main`.
+5. Skapa en pull request så granskar vi den som grupp. Om allting fungerar som det ska, så mergas den med `main`.
+6. Projektet är klart när alla pull requests är stängda/mergade.
 
 ***Om du inte kan använda Git:***
 1. Gå till repot i GitHub.
-2. Skapa en ny branch eller byt till den branch du arbetar i.
+2. Skapa en ny branch eller byt till den branch du arbetar inuti.
 3. Lägg till filen i mappen `Projekt-GruppDelta`, eller redigera filen om den redan finns.
 4. När du är klar, klicka på **"Commit changes..."**
 5. Skriv ett meddelande om vad som har gjorts/ändrats.
