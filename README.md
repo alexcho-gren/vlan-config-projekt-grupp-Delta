@@ -20,18 +20,18 @@ Vid deadline ska repot innehålla följande:
 
 ## Gruppmedlemmar & Rollfördelning
 * **Alexander Ågren** - ansvarig för Huvudprogrammet och integration av moduler till Main.
-* **Emil Estborn** - <roll>
-* **Raghed Kordi** - <roll>
+* **Raghed Kordi** - ansvarig för generering av VLAN-konfiguration. (`vlan_generate.py`)
+* **Emil Estborn** - ansvarig för generering av sub-interface till router konfiguration. (`router_generate.py`)
 * **Sara Ahmed** - ansvarig för CSV-läsare.(`vlan_parser.py`)
-* **Ali Heleil** - <roll>
+* **Ali Heleil** - ansvarig för validering av konfig-fil. (`vlan_validate.py`)
 
 ## Funktioner - Två faser
 1. **Generera konfiguration** (**vlan_parse**, **vlan_generate**, **router_generate**): Den läser in en `.csv`-fil innehållande VLAN-information och genererar automatiskt en färdig konfigurationsfil för VLAN.
 
 2. **Validera konfiguration** (**vlan_validate**): Kontrollerar en sparad konfigurationsfil mot tre regler: 
-* **Regel 1:**
-* **Regel 2:**
-* **Regel 3:**
+* **Regel 1:** VLAN 1 ska inte ha ett namn.
+* **Regel 2:** Det ska inte finnas lösenord i konfig-filen.
+* **Regel 3:** Namnen på alla VLAN ska bestå av max. 32 tecken.
 
 ## Arbetsflöde i Git
 Vi arbetar i egna branches, vi pushar till dessa branches och skapar pull requests.
