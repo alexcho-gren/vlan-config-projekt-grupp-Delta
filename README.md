@@ -33,6 +33,17 @@ Vid deadline ska repot innehålla följande:
 * **Regel 2:** Det ska inte finnas lösenord i konfig-filen.
 * **Regel 3:** Namnen på alla VLAN ska bestå av max. 32 tecken.
 
+Varje modul ska innehålla en funktion som blir anropad av `main`.
+
+Modul: `vlan_parse.py` - Funktion: `read_csv_file`
+
+
+Modul `vlan_generate.py` - Funktion: `generate_sw_config`
+
+Modul: `router_generate.py` - Funktion: `generate_r_config`
+
+Modul: `vlan_validate.py` - Funktion: `validate_config`
+
 ## Arbetsflöde i Git
 Vi arbetar i egna branches, vi pushar till dessa branches och skapar pull requests.
 
