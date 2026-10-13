@@ -4,7 +4,7 @@ Verktyg för automatisera generering av VLAN-konfigurationer från CSV-fil, samt
 ## Projektstruktur
 Projektet ska bestå av en `.csv`-fil och fyra `-py`-filer: en `main`-fil, och fyra 'moduler' som innehåller funtkioner som `main` kan importera, och en CSV-tabell som innehåller dem värden som funktionerna ska hantera.
 
-Vid deadline ska repot innehålla följande:
+Vid deadline ska mappen `Projekt-GruppDelta` innehålla följande:
 
 * **vlan_parse.py**: Öppnar och läser `.csv`-filen, tar sedan raderna ur `csv`-filens tabeller och omvandlar dem till ett strukturerat format som dem andra modulerna enkelt kan förstå.
 
@@ -22,7 +22,7 @@ Vid deadline ska repot innehålla följande:
 * **Alexander Ågren** - ansvarig för Huvudprogrammet och integration av moduler till Main.
 * **Raghed Kordi** - ansvarig för generering av VLAN-konfiguration. (`vlan_generate.py`)
 * **Emil Estborn** - ansvarig för generering av sub-interface till router konfiguration. (`router_generate.py`)
-* **Sara Ahmed** - ansvarig för CSV-läsare.(`vlan_parser.py`)
+* **Sara Ahmed** - ansvarig för CSV-läsare. (`vlan_parser.py`)
 * **Ali Heleil** - ansvarig för validering av konfig-fil. (`vlan_validate.py`)
 
 ## Funktioner - Två faser
