@@ -1,6 +1,10 @@
 # Projektarbete - Python: Konfigurering & Validering av VLAN
 Verktyg för automatisera generering av VLAN-konfigurationer från CSV-fil, samt validering av sparade konfigurationer mot specifika regler.
 
+### Angående AI
+Ni får använda AI som hjälp för att koda och skapa era moduler, **På villkoret att ni dokumenterar när ni gör det och hur ni använder det.**
+Ni måste också kunna förklara vad er färdiga kod gör och **hur** den gör det.
+
 ## Projektstruktur
 Projektet ska bestå av en `.csv`-fil och fyra `-py`-filer: en `main`-fil, och fyra 'moduler' som innehåller funtkioner som `main` kan importera, och en CSV-tabell som innehåller dem värden som funktionerna ska hantera.
 
