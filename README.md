@@ -8,9 +8,9 @@ Vid deadline ska mappen `Projekt-GruppDelta` innehålla följande:
 
 * **vlan_parse.py**: Öppnar och läser `.csv`-filen, tar sedan raderna ur `csv`-filens tabeller och omvandlar dem till ett strukturerat format som dem andra modulerna enkelt kan förstå.
 
-* **vlan_generate.py**: Tar den strukturerade datan från **vlan_parse** och skapar själva kommandona för switchens konfigurering och returnerar det som en lång textsträng.
+* **vlan_generate.py**: Tar den strukturerade datan från **vlan_parse** och skapar själva kommandona för switchens konfigurering och skriver ner dem i en konfig-fil.
 
-* **router_generate.py**: Tar emot datan från `.csv`-filen från **vlan_parse** och skapar kommandon som konfigurerar sub-interfaces för varje VLAN (VLAN nummer, encapsulation) och returnerar det som en lång textsträng.
+* **router_generate.py**: Tar emot datan från `.csv`-filen från **vlan_parse** och skapar kommandon som konfigurerar sub-interfaces för varje VLAN (VLAN nummer, encapsulation) och skriver ner dem i en konfig-fil.
 
 * **vlan_validate.py**: Läser en sparad konfigurationsfil och kontrollerar den mot tre regler.
 
@@ -36,7 +36,6 @@ Vid deadline ska mappen `Projekt-GruppDelta` innehålla följande:
 Varje modul ska innehålla en funktion som blir anropad av `main`.
 
 Modul: `vlan_parse.py` - Funktion: `read_csv_file`
-
 
 Modul `vlan_generate.py` - Funktion: `generate_sw_config`
 
