@@ -1,24 +1,35 @@
 # definierar funktionen "generate_r_config" och listan "vlan_data"
 def generate_r_config(vlan_data):
-    
     # Skapar och öppnar router.txt samt gör den skrivbar med "w"
     with open('router.txt', 'w') as f:
+        aktiva_interface = []
         # för varje instans av vlan i vlan_data:
         for vlan in vlan_data:
-            # skriver raden "interface" samt "no shutdown"
-            f.write(f'interface {vlan["interface"]} no shutdown\n')
-            # skriver raden och skapar subinterface på GigabitEthernet0/0
-            f.write(f'interface GigabitEthernet0/0.{vlan["vlan_id"]}\n')
-            # skriver raden ip address + ip-nummer + subnätmask
-            f.write(f'ip address {vlan["ip_address"]} {vlan["subnet"]}\n')
-            # skriver raden encapsulation dot1q + vlan-nummer
-            f.write(f'encapsulation dot1q {vlan["encapsulation_dot1q"]}\n')
-            # lägger till beskrivning för interfacet
-            f.write(f'description Gateway for {vlan["vlan_name"]}\n')
-            # för struktur i utdatan
-            f.write(f'!\n')
-        # returnerar router.txt med de skrivna raderna i
-        return open('router.txt')
+            # variabler för vlan_data
+            vlan_id = vlan['vlan_id']
+            vlan_name = vlan['vlan_name']
+            ip = vlan['ip_address']
+            mask = vlan['subnet']
+            enc1q = vlan['encapsulation_dot1q']
+            iface_name = vlan['interface']
+            if iface_name not in aktiva_interface:
+                # skriver raden "interface" samt "no shutdown"
+                f.write(f"interface {iface_name}\n")
+                f.write(f" no shutdown\n") 
+                f.write(f"!\n") 
+                aktiva_interface.append(iface_name)
+                # skriver raden och skapar subinterface på GigabitEthernet0/0
+                f.write(f'interface {iface_name}.{vlan_id}\n')
+                # skriver raden ip address + ip-nummer + subnätmask
+                f.write(f'ip address {ip} {mask}\n')
+                # skriver raden encapsulation dot1q + vlan-nummer
+                f.write(f'encapsulation dot1q {enc1q}\n')
+                # lägger till beskrivning för interfacet
+                f.write(f'description Gateway for {vlan_name}\n')
+                # för struktur i utdatan
+                f.write(f'!\n')
+            # returnerar router.txt med de skrivna raderna i
+            return open('router.txt')
     
 # Exempellista på data att ställa upp för routerkonfig
 if __name__ == "__main__":
@@ -34,23 +45,14 @@ if __name__ == "__main__":
     resultat = generate_r_config(vlan_data)
     print(resultat)
 
-    #***AI DISCLAIMER*** 
+    #***DISCLAIMER*** 
     # 
-    #   Mistral har hjälpt mig får rätt på write-raderna: 
-    #   Jag skrev f.write(rad);f'interface {interface} + no shutdown\n' 
-    #   vilket Mistral visade uppmärksammade mig på att ändra till 
-    #   f.write(f'interface {vlan["interface"]} no shutdown\n') 
-    #   eftersom funktionen write aldrig kallades på. 
-    # 
-    #   Dessutom var mina defintioner av listobjekten fel, 
-    #   vilken jag fick ändra på alla write-rader, 
-    #   vilket i sin tur resulterade i att jag kunde #mina onödiga defintioner (se nedan).
-        
-        #interface = rad ('interface')
-        #vl_id = rad['vlan_id']
-        #vlan_name = rad['vlan_name']
-        #enc1q = rad['encapsulation_dot1q']
-        #ip = rad['ip_address']
-        #subn = rad['subnet']
-
-    #   Till sist visade Mistral att jag skapade en dictionary i varje instans vilket "skuggade" variablerna i exempellistan.
+    #   Mistral har hjälpt mig får rätt på write-raderna, 
+    #   jag hade inte använt parenteser för att stänga in raden.
+    #   
+    #   Print-raderna har jag hämtat från Ragheds (vlan_generate), 
+    #   utan den skapades inte "router.txt".
+    #   
+    #   Alexander (main.py) hjälpte mig använda variabler ur 
+    #   vlan_data istället för att behöva skriva ut värdena på varje f.write-rad
+    #   samt sett till att raden med no shutdown bara skrivs en gång, med mera.
