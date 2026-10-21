@@ -1,0 +1,38 @@
+       [ Start: main.py ]
+               │
+               ▼
+┌──────────────────────────────┐
+│       vlan_parse.py          │  ◄── Läser in "vlan_data.csv"
+└──────────────┬───────────────┘
+               │
+               ▼  (Returnerar: vlan_list / lista med dictionaries)
+┌──────────────────────────────┐
+│         main.py              │  ◄── Sparar listan i minnet
+└──────────────┬───────────────┘
+               ├──────────────────────────────┐
+               ▼                              ▼
+┌──────────────────────────────┐┌──────────────────────────────┐
+│      vlan_generate.py        ││     router_generate.py       │
+│  (Skapar L2 Switch-konfig)   ││   (Skapar L3 Router-konfig)  │
+└──────────────┬───────────────┘└──────────────┬───────────────┘
+               │                              │
+               ▼ (Skriver till disk)          ▼ (Skriver till disk)
+       "switch_config.txt"            "router_config.txt"
+               │                              │
+               └──────────────┬───────────────┘
+                              │  (Skickar filstigarna som argument)
+                              ▼
+┌──────────────────────────────┐
+│      vlan_validate.py        │  ◄── Öppnar och granskar textfilerna
+└──────────────┬───────────────┘      rad för rad mot de 3 reglerna
+               │
+               ▼  (Returnerar: True eller False per fil)
+┌──────────────────────────────┐
+│         main.py              │  ◄── Gör slutgiltig kontroll (if/else)
+└──────────────┬───────────────┘
+               │
+               ▼
+       [ Terminalutskrift ]     ◄── "Godkänd!" eller "Underkänd!"
+               │
+               ▼
+        [ Slut: Hejdå! ]
