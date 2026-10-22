@@ -1,19 +1,19 @@
-def generate_sw_config(vlans, sw_config_file):
+def generate_sw_config(vlan_data, sw_config_file):
     with open(sw_config_file, "w") as f:
-        for vlan in vlans:
-            f.write(f"vlan {vlan['VLAN_ID']}\n")
-            f.write(f" name {vlan['VLAN_NAME']}\n")
+        for vlan in vlan_data:
+            f.write(f"vlan {vlan['vlan_id']}\n")
+            f.write(f" name {vlan['vlan_name']}\n")
             f.write("!\n")
 
 
 
 if __name__ == "__main__":
     vlans = [
-        {"VLAN_ID": 10, "VLAN_NAME": "Management"},
-        {"VLAN_ID": 20, "VLAN_NAME": "Production"},
-        {"VLAN_ID": 30, "VLAN_NAME": "Staff"},
-        {"VLAN_ID": 40, "VLAN_NAME": "Guests"},
-        {"VLAN_ID": 99, "VLAN_NAME": "Native"}
+        {"vlan_id": 10, "vlan_name": "Management"},
+        {"vlan_id": 20, "vlan_name": "Production"},
+        {"vlan_id": 30, "vlan_name": "Staff"},
+        {"vlan_id": 40, "vlan_name": "Guests"},
+        {"vlan_id": 99, "vlan_name": "Native"}
     ]
     sw_config_file = "switch_config.txt"
 
