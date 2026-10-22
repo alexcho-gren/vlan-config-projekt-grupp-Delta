@@ -1,7 +1,0 @@
-vlan_id,vlan_name,description,ip_address,subnet,interface,encapsulation_dot1q
-,,,,,,gigabitEthernet0/0
-10,Management,,192.168.1.1,255.255.255.192,fastEthernet,10
-20,Production,,192.168.1.65,255.255.255.192,fastEthernet,20
-30,Staff,,192.168.1.129,255.255.255.192,fastEthernet,30
-40,Guests,,192.168.1.193,255.255.255.192,fastEthernet,40
-99,Native,,,,,
