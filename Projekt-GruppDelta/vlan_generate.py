@@ -15,7 +15,7 @@ if __name__ == "__main__":
         {"VLAN_ID": 40, "VLAN_NAME": "Guests"},
         {"VLAN_ID": 99, "VLAN_NAME": "Native"}
     ]
-sw_config_file = "switch_config.txt"
+    sw_config_file = "switch_config.txt"
 
-generate_sw_config(vlans, sw_config_file)
-print("Switchkonfigurationen har sparats!")
+    generate_sw_config(vlans, sw_config_file)
+    print("Switchkonfigurationen har sparats!")
