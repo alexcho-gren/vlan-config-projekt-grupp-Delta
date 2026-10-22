@@ -1,6 +1,6 @@
 # definierar funktionen "generate_r_config" och listan "vlan_data"
 def generate_r_config(vlan_data, r_config_file):
-    # Skapar och öppnar router.txt samt gör den skrivbar med "w"
+    # Skapar och öppnar textfil, samt gör den skrivbar med "w"
     with open(r_config_file, 'w') as f:
         aktiva_interface = []
         # för varje instans av vlan i vlan_data:

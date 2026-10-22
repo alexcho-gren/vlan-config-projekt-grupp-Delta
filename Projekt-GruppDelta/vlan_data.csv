@@ -1,6 +1,7 @@
-vlan_id,vlan_name,interface,ip_address,subnet
-1,,GigabitEthernet0/0,192.168.1.1,255.255.255.192
-10,Ekonomi_och_Finans,GigabitEthernet0/0,192.168.10.1,255.255.255.192
-20,IT_Support,GigabitEthernet0/0,192.168.20.1,255.255.255.192
-30,HR_och_Personalavdelningen_Vastra_Gotaland,GigabitEthernet0/1,192.168.30.1,255.255.255.192
-99,Management_VLAN,GigabitEthernet0/1,192.168.99.1,255.255.255.192
+vlan_id,vlan_name,ip_address,subnet,interface
+,,,,
+10,Management,192.168.1.1,255.255.255.192,gigabitEthernet0/0
+20,Production,192.168.1.65,255.255.255.192,
+30,Staff,192.168.1.129,255.255.255.192,
+40,Guests,192.168.1.193,255.255.255.192,
+99,Native,,,
