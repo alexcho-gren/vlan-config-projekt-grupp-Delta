@@ -1,48 +1,78 @@
+# Definition av funktionen som tar emot namnet på den fil som ska granskas
 def validate_config(filename):
+    
+    # Skapar en flagga som vi utgår från är True tills ett fel hittas
+    is_valid = True
+    
+    # Skapar en strömbrytare ("kom-ihåg-flagga") för VLAN 1 och sätter den till False från början
+    vlan_1_aktiv = False
 
-    fel_rapport = []
-
+    # Öppnar textfilen (konfigurationen) i läsläge ('r' för read)
     with open(filename, "r") as file:
+        
+        # Startar en loop som läser igenom textfilen rad för rad, uppifrån och ner
+        for line in file:
+            
+            # Rensar bort dolda radbrytningar (\n) och extra mellanslag i början/slutet av raden
+            line = line.strip()
 
-        lines = file.readlines()
+            # --- DEL 1: HÅLL KOLL PÅ VILKET VLAN VI ÄR I (STRÖMBRYTAREN) ---
+            
+            # Kontrollerar OM textraden är exakt "vlan 1"
+            if line == "vlan 1":
+                # OM det är VLAN 1, slås strömbrytaren PÅ (sätts till True)
+                vlan_1_aktiv = True
+                
+            # Kontrollerar OM raden startar med ordet "vlan " OCH att den INTE är vlan 1
 
-    current_vlan = None
+            # OM raden startar med "vlan " OCH raden INTE är "vlan 1":
+            if line.startswith("vlan ") and line != "vlan 1":
+                # Så är vi på ett annat VLAN-nummer, strömbrytaren slås AV (sätts till False)
+                vlan_1_aktiv = False
+                
+            # Kontrollerar OM raden är ett utropstecken ELLER ordet "exit" (blocket avslutas)
+            if line == "!" or line == "exit":
+                # Om vi går ur VLAN-konfigureringen helt, slår strömbrytaren också AV
+                vlan_1_aktiv = False
 
-    for line in lines:
+            # --- DEL 2: GRANSKA DE TRE REGLERNA ---
+            
+            # KONTROLL: Regel 1 & Regel 3 (Körs bara om raden faktiskt sätter ett namn)
+            
+            # OM raden BÖRJAR med "name ":
+            if line.startswith("name "):
+                
+                # Klipper bort ordet "name " (de första 5 tecknen) så att bara själva namnet sparas
+                # Mellanslaget efter "name" räknas som ett tecken
+                vlan_name = line[5:].strip()
 
-        line = line.strip()
+                # REGEL 1: Kontrollerar OM strömbrytaren för VLAN 1 är PÅ (True)
 
-        if line == "vlan 1":
+                # OM flaggan är PÅ:
+                if vlan_1_aktiv == True:
+                    # Så har VLAN 1 fått ett namn, vilket är ett regelbrott
+                    print(f"[FEL] Regel 1 bruten: VLAN 1 har fått ett namn ('{vlan_name}')!")
+                    # Programmets status sätts till False eftersom filen är underkänd
+                    is_valid = False
 
-            current_vlan = 1
+                # REGEL 3: Kontrollerar om namnet består av fler än 32 tecken
 
-        elif line.startswith("vlan "):
+                # OM värdet i 'vlan_name' är är HÖGRE än 32:
+                if len(vlan_name) > 32:
+                    # Är namnet för långt, skriv ut ett felmeddelande i terminalen
+                    print(f"[FEL] Regel 3 bruten: Namnet '{vlan_name}' är för långt ({len(vlan_name)} tecken)!")
+                    # Programmets status sätts till False
+                    is_valid = False
 
-            current_vlan = int(line.split()[1])
+            # REGEL 2: Kontrollerar om känsliga lösenordsord finns i textraden
+            # .lower() gör om hela raden till små bokstäver så vi inte missar ord som "Secret" eller "PASSWORD"
 
-        elif line == "!" or line == "exit":
+            # OM "password" FINNS I raden ELLER "secret" FINNS I raden:
+            if "password" in line.lower() or "secret" in line.lower():
+                # Så skrivs raden där felet fanns ut i terminalen
+                print(f"[FEL] Regel 2 bruten: Hittade ett lösenord i raden: '{line}'")
+                # Programmets status sätts till False
+                is_valid = False
 
-            current_vlan = None
-
-        if current_vlan == 1 and line.startswith("name "):
-
-            fel_rapport.append("Regel 1 fel: VLAN 1 får inte ha ett namn!")
-        # Regel 2: Inga lösenord
-
-        if "password" in line.lower() or "secret" in line.lower():
-
-            fel_rapport.append(
-
-                "Regel 2 fel: Lösenord hittades i konfigurationen!"
-
-            )
-        # Regel 3: VLAN-namn max 32 tecken
-
-        if current_vlan is not None and line.startswith("name "):
-            vlan_name = line[5:]
-
-            if len(vlan_name) > 32:
-                fel_rapport.append("Regel 3 fel: VLAN-namet ät för långt!")
-  
-    return fel_rapport
-
+    # När hela filen är färdigläst skickar vi tillbaka om filen var godkänd (True) eller underkänd (False)
+    return is_valid
