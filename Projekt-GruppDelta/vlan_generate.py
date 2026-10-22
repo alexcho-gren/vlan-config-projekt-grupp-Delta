@@ -1,12 +1,11 @@
-def generate_sw_config(vlans):
-    config = ""
+def generate_sw_config(vlans, sw_config_file):
+    with open(sw_config_file, "w") as f:
+        for vlan in vlans:
+            f.write(f"vlan {vlan['VLAN_ID']}\n")
+            f.write(f" name {vlan['VLAN_NAME']}\n")
+            f.write("!\n")
 
-    for vlan in vlans:
-        config += f"vlan {vlan['VLAN_ID']}\n"
-        config += f" name {vlan['VLAN_NAME']}\n"
-        config += "!\n"
 
-    return config
 
 if __name__ == "__main__":
     vlans = [
@@ -16,5 +15,7 @@ if __name__ == "__main__":
         {"VLAN_ID": 40, "VLAN_NAME": "Guests"},
         {"VLAN_ID": 99, "VLAN_NAME": "Native"}
     ]
-    resultat = generate_sw_config(vlans)
-    print(resultat)
+sw_config_file = "switch_config.txt"
+
+generate_sw_config(vlans, sw_config_file)
+print("Switchkonfigurationen har sparats!")
