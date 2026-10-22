@@ -18,7 +18,7 @@ Vid deadline ska mappen `Projekt-GruppDelta` innehålla följande:
 
 * **vlan_validate.py**: Läser en sparad konfigurationsfil och kontrollerar den mot tre regler.
 
-* **main.py**: Hämtar funktionerna från ovanstående filer och sammanfogar alla funktioner i en applikation. SKriver en konfig-fil med texten från **dem tre översta modulerna** och granskar den med **vlan_validate**. När projektet är färdigt så körs endast **main**.
+* **main.py**: Hämtar funktionerna från ovanstående filer och sammanfogar alla funktioner i en applikation. Anropar funktionerna från alla moduler för att skapa två konfig-filer och granskar dem mot ett antal regler. När projektet är färdigt så körs endast **main**.
 
 * **test.csv**: En CSV-tabell som innehåller all information som behövs för konfigurering.
 
