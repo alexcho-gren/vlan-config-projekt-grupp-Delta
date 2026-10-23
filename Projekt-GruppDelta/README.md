@@ -99,3 +99,9 @@ I detta projekt har generativa AI-verktyg (så som ChatGPT och Mistral) varit ti
 **Vår policy och tillämpning:**
 * AI har använts för att förklara nätverkssyntax (Cisco IOS-ordning) samt ge tips på isolerade Python-byggstenar (t.ex. hur `csv.DictReader` eller strängmetoder fungerar).
 * Ingen färdig kod har genererats i sin helhet av AI utan att den ansvarige gruppmedlemmen har granskat och förstått logiken.
+
+**Alexander:**
+
+* Jag har huvudsakligen använt AI för att skapa projektets struktur, uppdelning av moduler, generering av pseudokod, samt konsultation/granskning om/av kod.
+
+* När det kommer till själva kodningen har jag använt AI mest till att ställa frågor om **hur** kod ska implementeras, enklare sätt att skriva dem andra modulerna så jag kan bättre hjälpa dem andra i gruppen, samt hjälp med kommentering och dokumentation.
