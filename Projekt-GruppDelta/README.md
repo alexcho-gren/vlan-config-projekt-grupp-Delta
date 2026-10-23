@@ -17,7 +17,7 @@ Projektet är uppdelat i en huvudfil och fyra fristående moduler:
 Programmet kräver inga externa bibliotek, det använder Pythons inbyggda standardbibliotek.
 
 1. **Kloning av repo:**
-   Ladda ner projektet till din lokala dator via Git:
+   Ladda ner projektet till din dator via Git:
    ```bash
    git clone <länk-till-ert-repo>
    cd <projektmappens-namn>
