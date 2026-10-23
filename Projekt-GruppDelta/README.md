@@ -105,3 +105,27 @@ I detta projekt har generativa AI-verktyg (så som ChatGPT och Mistral) varit ti
 * Jag har huvudsakligen använt AI för att skapa projektets struktur, uppdelning av moduler, generering av pseudokod, samt konsultation/granskning om/av kod.
 
 * När det kommer till själva kodningen har jag använt AI mest till att ställa frågor om **hur** kod ska implementeras, enklare sätt att skriva dem andra modulerna så jag kan bättre hjälpa dem andra i gruppen, samt hjälp med kommentering och dokumentation.
+
+**Raghed:**
+
+* Jag använde AI framför allt som stöd under utvecklingen för att förstå python och för att förbättra dokumentationen.
+
+**Sara:**
+
+* Jag har använt AI som ett hjälpmedel för att skriva och förstå koden. 
+
+* Jag har också tagit hjälp av mina gruppkamrater till att få min del att fungera med resterande moduler, samt fått rådgivning om andra delar inom projektet.
+
+**Emil:**
+
+* Mistral har hjälpt mig får rätt på write-raderna, jag hade inte använt parenteser för att stänga in raden.
+
+* Alexander (main.py) hjälpte mig använda variabler ur vlan_data istället för att behöva skriva ut värdena på varje f.write-rad samt sett till att raden med no shutdown bara skrivs en gång, med mera.
+
+**Ali:**
+
+* Jag använde ChatGPT för att förstå uppgiften och lära mig hur Python-kod med def, for, if, open(), strip(), len() och return fungerar. 
+
+* Jag fick hjälp att skapa branchen modul-vlan-validate på GitHub, skriva den första versionen och rätta indragningar. Först returnerade modulen en lista med felmeddelanden. Efter diskussion i gruppen hjälpte en gruppkamrat till att uppdatera koden så att funktionen i stället returnerar True eller False och skriver ut felmeddelanden. 
+
+* Jag lade in den uppdaterade koden i min branch och öppnade Pull Request #4 för granskning.
